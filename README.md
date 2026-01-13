@@ -10,6 +10,7 @@ The system trains a convolutional autoencoder to turn an image into a compact la
 | -------------------------- | ----------------------------------------------------- |
 | `imagecompression.py`   | Full training, model, and evaluation code             |
 | `Final_Report.pdf` | Final paper with experiments, tables, and comparisons |
+| `requirements.txt` | Installations required and installed via the script |
 
 ## Model design
 
@@ -26,7 +27,7 @@ A learned per-channel quantization scale lets the network control how finely eac
 
 Two entropy models are tested:
 
-* Factorized Gaussian prior*
+* Factorized Gaussian prior
 * Hyperprior (with side information)
 
 The simpler factorized model works better for this small network.
@@ -44,6 +45,25 @@ This lets us tune how much we care about:
 * Structural similarity
 * Perceptual realism
 
+## How to run (Colab)
+
+1. Open Google Colab
+
+2. Upload your imagecompression.py (or open it from GitHub in Colab if you prefer)
+
+3. Run the cells/top-to-bottom (or “Runtime → Run all”)
+
+4. The script will:
+    * install needed libraries (pytorch-msssim, lpips, etc.)
+    * download DIV2K (via kagglehub)
+    * train the model and save checkpoints
+    * run evaluation + Kodak comparisons and save preview images/plots
+
+5. Download any model checkpoints, generated image comparisons, etc. to computer
+    * To load a saved checkpoint in Colab (resume or run eval on a trained model), uncomment these lines and update the path to your .pt file saved in Colab:
+        * ckpt = torch.load("/content/ae_step2000.pt", map_location=cfg.device)
+        * model.load_state_dict(ckpt["model"])
+      
 ## Experimental results
 
 From the experiments:
