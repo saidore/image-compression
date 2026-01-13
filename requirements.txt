@@ -1,0 +1,17 @@
+# Core
+numpy
+pandas
+Pillow
+matplotlib
+tqdm
+
+# PyTorch
+torch
+torchvision
+
+# Metrics / perceptual loss
+pytorch-msssim
+lpips
+
+# Dataset download used in your script
+kagglehub
