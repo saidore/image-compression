@@ -1,2 +1,4 @@
-# image-compression
-The system trains a convolutional autoencoder to turn an image into a compact latent code, then reconstructs it. A learned entropy model estimates how many bits are needed to store that code, so the model learns to make images small while simultaneously emphasizing visual quality.
+# Learned Image Compression with Perceptual Quality at Matched Bitrates
+This project builds and studies a small neural-network image compressor that learns how to trade off file size, image quality, and human-perceived visual quality.
+Instead of using fixed rules like JPEG or WebP, the model learns how to compress images directly from data using deep learning.
+The system trains a convolutional autoencoder to turn an image into a compact latent code, then reconstructs it. A learned entropy model estimates how many bits are needed to store that code, so the model learns to make images small while simultaneously emphasizing visual quality. The training objective balances three things: how small the file is (bitrate), how close the pixels are (MSE/PSNR), and the visual quality as it relates to human perception (LPIPS, MS-SSIM).
