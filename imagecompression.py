@@ -305,8 +305,8 @@ class AEWithPrior(nn.Module):
       return x_hat, bpp
 
 model = AEWithPrior(latent_ch=cfg.latent_ch).to(cfg.device)          # Initialize model and move to device
-ckpt = torch.load("/content/ae_step2000.pt", map_location=cfg.device)
-model.load_state_dict(ckpt["model"])
+#ckpt = torch.load("/content/ae_step2000.pt", map_location=cfg.device)   # Uncomment and load model checkpoint saved locally in Colab
+#model.load_state_dict(ckpt["model"])
 opt = torch.optim.Adam(model.parameters(), lr=cfg.lr)                # Adam optimizer
 scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=cfg.max_steps) # Cosine Annealing LR scheduler
 scaler = torch.amp.GradScaler(enabled=cfg.amp)                  # AMP for speed
